@@ -1,1 +1,0 @@
-../../../../gradle-jdks-setup/src/main/resources/gradle-jdks-functions.sh
