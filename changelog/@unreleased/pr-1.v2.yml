@@ -1,0 +1,5 @@
+type: fix
+fix:
+  description: Intellij plugin only
+  links:
+  - https://github.com/palantir/gradle-jdks-idea-plugin/pull/1
