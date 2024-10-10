@@ -10,3 +10,7 @@ If a project has the Gradle JDK Automanagement configured (`palantir.jdk.setup.e
 - run the Gradle jdks setup script: ./gradle/gradle-jdks-setup.sh before any Gradle Task and before the idea project is configured.
 - set the Project SDK to the Gradle Daemon JDK.
 - set the GradleJVM to the Project SDK.
+
+
+<img width="1407" alt="Screenshot 2024-10-10 at 10 39 39 AM" src="https://github.com/user-attachments/assets/01fabaf2-1a0b-4fb9-8398-8a8586a597eb">
+
