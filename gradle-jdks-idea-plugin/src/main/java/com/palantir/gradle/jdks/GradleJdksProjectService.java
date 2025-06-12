@@ -140,7 +140,6 @@ public final class GradleJdksProjectService implements Disposable {
                 });
     }
 
-    @SuppressWarnings("for-rollout:ThrowSpecificExceptions")
     private void setupGradleJdks() {
         try {
             consoleView.get().clear();
@@ -173,7 +172,6 @@ public final class GradleJdksProjectService implements Disposable {
         }
     }
 
-    @SuppressWarnings("for-rollout:ThrowSpecificExceptions")
     private void updateGradleJvm() {
         for (GradleProjectSettings projectSettings :
                 GradleSettings.getInstance(project).getLinkedProjectsSettings()) {
