@@ -50,6 +50,7 @@ import com.intellij.ui.content.ContentFactory;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Optional;
@@ -207,7 +208,7 @@ public final class GradleJdksProjectService implements Disposable {
                     });
                 }
             } catch (IOException e) {
-                throw new RuntimeException("Failed to set gradleJvm", e);
+                throw new UncheckedIOException("Failed to set gradleJvm", e);
             }
         }
     }
