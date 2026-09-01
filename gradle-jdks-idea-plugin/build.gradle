@@ -1,17 +1,30 @@
 apply plugin: 'java'
 apply plugin: 'com.palantir.external-publish-intellij'
 
-intellij {
-    pluginName = "palantir-gradle-jdks"
-    updateSinceUntilBuild = true
-    version = "2024.1"
-    plugins = ['java', 'org.jetbrains.plugins.gradle']
+repositories {
+    intellijPlatform {
+        defaultRepositories()
+    }
 }
 
-patchPluginXml {
-    pluginDescription = "Configures the Gradle JDKs for the Toolchains used for a project and for the Gradle Daemon."
-    sinceBuild = '241' // TODO: test against this version of IntelliJ to ensure no regressions
-    untilBuild = ''
+dependencies {
+    intellijPlatform {
+        intellijIdeaCommunity('2024.1') {
+            useInstaller = false
+        }
+        bundledPlugins('com.intellij.java', 'org.jetbrains.plugins.gradle')
+    }
+}
+
+intellijPlatform {
+    projectName = 'palantir-gradle-jdks'
+    pluginConfiguration {
+        description = 'Configures the Gradle JDKs for the Toolchains used for a project and for the Gradle Daemon.'
+        ideaVersion {
+            sinceBuild = '241' // TODO: test against this version of IntelliJ to ensure no regressions
+            untilBuild = provider { null }
+        }
+    }
 }
 
 // Javadoc fails if there are no public classes to javadoc, so make it stop complaining.
