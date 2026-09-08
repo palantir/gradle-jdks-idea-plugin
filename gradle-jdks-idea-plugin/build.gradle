@@ -21,13 +21,15 @@ intellijPlatform {
     pluginConfiguration {
         description = 'Configures the Gradle JDKs for the Toolchains used for a project and for the Gradle Daemon.'
         ideaVersion {
-            sinceBuild = '241' // TODO: test against this version of IntelliJ to ensure no regressions
+            // sinceBuild derives from the intellijIdeaCommunity() version
             untilBuild = provider { null }
         }
     }
     pluginVerification {
         ides {
             create('IC', '2024.1')
+            create('IU', '2025.3.6.1')
+            create('IU', '2026.2.2')
         }
     }
 }
