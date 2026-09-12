@@ -2,9 +2,7 @@ apply plugin: 'java'
 apply plugin: 'com.palantir.external-publish-intellij'
 
 repositories {
-    intellijPlatform {
-        defaultRepositories()
-    }
+    mavenCentral() { metadataSources { mavenPom(); ignoreGradleMetadataRedirection() } }
 }
 
 dependencies {
