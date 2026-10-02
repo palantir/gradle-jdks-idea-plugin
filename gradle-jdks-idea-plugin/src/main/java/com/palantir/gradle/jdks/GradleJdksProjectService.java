@@ -26,6 +26,7 @@ import com.intellij.execution.process.ProcessListener;
 import com.intellij.execution.process.ProcessTerminatedListener;
 import com.intellij.execution.ui.ConsoleView;
 import com.intellij.execution.ui.ConsoleViewContentType;
+import com.intellij.ide.impl.TrustedProjects;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationGroupManager;
 import com.intellij.notification.NotificationType;
@@ -115,6 +116,19 @@ public final class GradleJdksProjectService implements Disposable {
         if (!Files.exists(gradleSetupScript)) {
             logger.info(String.format(
                     "Skipping setupGradleJdks because gradle JDK setup is not found %s", gradleSetupScript));
+            return;
+        }
+        if (!TrustedProjects.isTrusted(project)) {
+            logger.info(
+                    String.format("Skipping setupGradleJdks because the project is untrusted:  %s", project.getName()));
+            consoleView.get().clear();
+            consoleView
+                    .get()
+                    .print(
+                            String.format(
+                                    "Skipping setupGradleJdks because the project is untrusted: %s\n",
+                                    project.getName()),
+                            ConsoleViewContentType.ERROR_OUTPUT);
             return;
         }
         TasksKt.withBackgroundProgress(
