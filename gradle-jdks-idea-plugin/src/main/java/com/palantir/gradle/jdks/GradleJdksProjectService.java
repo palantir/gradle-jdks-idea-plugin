@@ -77,7 +77,6 @@ public final class GradleJdksProjectService implements Disposable {
         this.project = project;
     }
 
-    @SuppressWarnings("for-rollout:deprecation")
     private ConsoleView initConsoleView() {
         ConsoleView newConsoleView =
                 TextConsoleBuilderFactory.getInstance().createBuilder(project).getConsole();
